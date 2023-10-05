@@ -1,0 +1,678 @@
+openapi: 3.1.0
+info: 
+  title: API de seguimiento de menús de restaurantes de comidas rápidas en Santander - Colombia.
+  description: Esta API se encarga de manejar información almacenada en una base de datos (MongoDB) que contiene datos necesarios para gestionar y dar a conocer los diferentes restaurantes que ofrecen productos o platillos.
+  version: 2.0.0
+servers:
+- url: http://localhost:2031
+tags:
+- name: Arepas
+  description: Operaciones relacionadas con las arepas.
+- name: Bebidas
+  description: Operaciones relacionadas con las bebidas.
+- name: Carnes
+  description: Operaciones relacionadas con las carnes.
+- name: Combos
+  description: Operaciones relacionadas con las carnes.
+- name: Hamburguesas
+  description: Operaciones relacionadas con las carnes.
+- name: Papas_Fritas
+  description: Operaciones relacionadas con las carnes.
+- name: Picadas
+  description: Operaciones relacionadas con las carnes.
+- name: Restaurantes
+  description: Operaciones relacionadas con las carnes.
+
+
+paths:
+  /arepas:
+    get:
+      tags:
+      - Arepas
+      summary: Obtiene los datos de las arepas.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses: 
+        '200':
+          description: Respuesta exitosa
+    post:
+      tags:
+      - Arepas
+      summary: Crea una nueva arepa.
+      requestBody:
+        description: Datos de la nueva arepa.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                precio:
+                  type: number
+      responses:  
+        '201':
+          description: Creada exitosamente
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      tags:
+      - Arepas
+      summary: Actualiza datos de una arepa existente.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      requestBody:
+        description: Nuevos datos de la arepa.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                precio:
+                  type: number
+      responses:  
+        '200':
+          description: Actualizada exitosamente
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags:
+      - Arepas
+      summary: Elimina una arepa existente.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:  
+        '204':
+          description: Eliminada exitosamente
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+
+
+
+  /bebidas:
+    get:
+      tags:
+      - Bebidas
+      summary: Obtiene los datos de los cursos.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:  
+        '200':
+          description: Respuesta exitosa
+    post:
+      tags:
+      - Bebidas
+      summary: Postea datos para las Asignaturas.
+      requestBody:
+        description: Datos del nuevo curso.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                precio:
+                  type: number
+      responses:  
+        '201':
+          description: Creado exitosamente
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      tags:
+      - Bebidas
+      summary: Actualiza datos de una Asignatura existente.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      requestBody:
+        description: Nuevos datos del curso.
+        required: False
+        content:
+          application/json:
+            schema:
+              properties:
+                nombre:
+                  type: string
+                precio:
+                  type: number
+                
+                
+                
+                
+      responses:  
+        '200':
+          description: Actualizado exitosamente
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags:
+      - Bebidas
+      summary: Elimina una producto o una Arepa existente.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:  
+        '204':
+          description: Eliminado exitosamente
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+          
+          
+          
+          
+  /carnes:
+    get:
+      tags:
+      - Carnes
+      summary: Obtiene los datos de los cursos.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:  
+        '200':
+          description: Respuesta exitosa
+    post:
+      tags:
+      - Carnes
+      summary: Crea un nuevo curso de carnes.
+      requestBody:
+        description: Datos del nuevo curso de carnes.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                precio:
+                  type: number
+      responses:  
+        '201':
+          description: Creado exitosamente
+        '400':
+          description: Los datos son incorrectos o no se proporcionaron correctamente
+        '500':
+          description: Error interno del servidor
+    put:
+      tags:
+      - Carnes
+      summary: Actualiza datos de un curso de carnes existente.
+      requestBody:
+        description: Nuevos datos del curso de carnes.
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                precio:
+                  type: number
+      responses:  
+        '200':
+          description: Actualizado exitosamente
+        '400':
+          description: Los datos son incorrectos o no se proporcionaron correctamente
+        '404':
+          description: No se encontró el recurso solicitado
+        '500':
+          description: Error interno del servidor
+    delete:
+      tags:
+      - Carnes
+      summary: Elimina un curso de carnes existente.
+      responses:  
+        '204':
+          description: Eliminado exitosamente
+        '404':
+          description: No se encontró el recurso solicitado
+        '500':
+          description: Error interno del servidor
+  
+  
+  /combos:
+    get:
+      tags:
+      - Combos
+      summary: Obtiene los datos de los cursos.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:  
+        '200':
+          description: Respuesta exitosa
+    post:
+      tags:
+      - Combos
+      summary: Crea un nuevo curso de carnes.
+      requestBody:
+        description: Datos del nuevo curso de carnes.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                descripcion:
+                  type: string
+                precio:
+                  type: number
+                comida:
+                  type: string
+                bebida:
+                  type: string
+      responses:  
+        '201':
+          description: Creado exitosamente
+        '400':
+          description: Los datos son incorrectos o no se proporcionaron correctamente
+        '500':
+          description: Error interno del servidor
+    put:
+      tags:
+      - Combos
+      summary: Actualiza datos de un curso de carnes existente.
+      requestBody:
+        description: Nuevos datos del curso de carnes.
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                descripcion:
+                  type: string
+                precio:
+                  type: number
+                comida:
+                  type: string
+                bebida:
+                  type: string
+      responses:  
+        '200':
+          description: Actualizado exitosamente
+        '400':
+          description: Los datos son incorrectos o no se proporcionaron correctamente
+        '404':
+          description: No se encontró el recurso solicitado
+        '500':
+          description: Error interno del servidor
+    delete:
+      tags:
+      - Combos
+      summary: Elimina un curso de carnes existente.
+      responses:  
+        '204':
+          description: Eliminado exitosamente
+        '404':
+          description: No se encontró el recurso solicitado
+        '500':
+          description: Error interno del servidor
+          
+          
+          
+          
+          
+          
+          
+          
+  
+  
+  
+  /hamburguesas:
+    get:
+      tags:
+      - Hamburguesas
+      summary: Obtiene los datos de los cursos.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:  
+        '200':
+          description: Respuesta exitosa
+    post:
+      tags:
+      - Hamburguesas
+      summary: Crea un nuevo curso de carnes.
+      requestBody:
+        description: Datos del nuevo curso de carnes.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                precio:
+                  type: number
+      responses:  
+        '201':
+          description: Creado exitosamente
+        '400':
+          description: Los datos son incorrectos o no se proporcionaron correctamente
+        '500':
+          description: Error interno del servidor
+    put:
+      tags:
+      - Hamburguesas
+      summary: Actualiza datos de un curso de carnes existente.
+      requestBody:
+        description: Nuevos datos del curso de carnes.
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                precio:
+                  type: number
+      responses:  
+        '200':
+          description: Actualizado exitosamente
+        '400':
+          description: Los datos son incorrectos o no se proporcionaron correctamente
+        '404':
+          description: No se encontró el recurso solicitado
+        '500':
+          description: Error interno del servidor
+    delete:
+      tags:
+      - Hamburguesas
+      summary: Elimina un curso de carnes existente.
+      responses:  
+        '204':
+          description: Eliminado exitosamente
+        '404':
+          description: No se encontró el recurso solicitado
+        '500':
+          description: Error interno del servidor
+          
+          
+          
+  
+  
+  
+  
+  /papas_Fritas:
+    get:
+      tags:
+      - Papas_Fritas
+      summary: Obtiene los datos de los cursos.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:  
+        '200':
+          description: Respuesta exitosa
+    post:
+      tags:
+      - Papas_Fritas
+      summary: Crea un nuevo curso de carnes.
+      requestBody:
+        description: Datos del nuevo curso de carnes.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                precio:
+                  type: number
+      responses:  
+        '201':
+          description: Creado exitosamente
+        '400':
+          description: Los datos son incorrectos o no se proporcionaron correctamente
+        '500':
+          description: Error interno del servidor
+    put:
+      tags:
+      - Papas_Fritas
+      summary: Actualiza datos de un curso de carnes existente.
+      requestBody:
+        description: Nuevos datos del curso de carnes.
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                precio:
+                  type: number
+      responses:  
+        '200':
+          description: Actualizado exitosamente
+        '400':
+          description: Los datos son incorrectos o no se proporcionaron correctamente
+        '404':
+          description: No se encontró el recurso solicitado
+        '500':
+          description: Error interno del servidor
+    delete:
+      tags:
+      - Papas_Fritas
+      summary: Elimina un platillos de papas fritas.
+      responses:  
+        '204':
+          description: Eliminado exitosamente
+        '404':
+          description: No se encontró el recurso solicitado
+        '500':
+          description: Error interno del servidor        
+          
+  
+  
+
+  /picadas:
+    get:
+      tags:
+      - Picadas
+      summary: Obtiene los datos de los cursos.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:  
+        '200':
+          description: Respuesta exitosa
+    post:
+      tags:
+      - Picadas
+      summary: Crea un nuevo curso de carnes.
+      requestBody:
+        description: Datos del nuevo curso de carnes.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                precio:
+                  type: number
+      responses:  
+        '201':
+          description: Creado exitosamente
+        '400':
+          description: Los datos son incorrectos o no se proporcionaron correctamente
+        '500':
+          description: Error interno del servidor
+    put:
+      tags:
+      - Picadas
+      summary: Actualiza datos de un curso de carnes existente.
+      requestBody:
+        description: Nuevos datos del curso de carnes.
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                precio:
+                  type: number
+      responses:  
+        '200':
+          description: Actualizado exitosamente
+        '400':
+          description: Los datos son incorrectos o no se proporcionaron correctamente
+        '404':
+          description: No se encontró el recurso solicitado
+        '500':
+          description: Error interno del servidor
+    delete:
+      tags:
+      - Picadas
+      summary: Elimina un platillos de papas fritas.
+      responses:  
+        '204':
+          description: Eliminado exitosamente
+        '404':
+          description: No se encontró el recurso solicitado
+        '500':
+          description: Error interno del servidor    
+  
+  
+  
+  
+  
+  /restaurantes:
+    get:
+      tags:
+      - Restaurantes
+      summary: Obtiene los datos de los cursos.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:  
+        '200':
+          description: Respuesta exitosa
+    post:
+      tags:
+      - Restaurantes
+      summary: Crea un nuevo curso de carnes.
+      requestBody:
+        description: Datos del nuevo curso de carnes.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                tipo:
+                  type: string
+                direccion:
+                  type: string
+                telefono:
+                  type: string
+                rating:
+                  type: number
+      responses:  
+        '201':
+          description: Creado exitosamente
+        '400':
+          description: Los datos son incorrectos o no se proporcionaron correctamente
+        '500':
+          description: Error interno del servidor
+    put:
+      tags:
+      - Restaurantes
+      summary: Actualiza datos de un curso de carnes existente.
+      requestBody:
+        description: Nuevos datos del curso de carnes.
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                tipo:
+                  type: string
+                direccion:
+                  type: string
+                telefono:
+                  type: string
+                rating:
+                  type: number
+      responses:  
+        '200':
+          description: Actualizado exitosamente
+        '400':
+          description: Los datos son incorrectos o no se proporcionaron correctamente
+        '404':
+          description: No se encontró el recurso solicitado
+        '500':
+          description: Error interno del servidor
+    delete:
+      tags:
+      - Restaurantes
+      summary: Elimina un platillos de papas fritas.
+      responses:  
+        '204':
+          description: Eliminado exitosamente
+        '404':
+          description: No se encontró el recurso solicitado
+        '500':
+          description: Error interno del servidor    
+  
+  
+  
+  
+  
+  
+     
+  
+        
+components:
+  responses:
+    BadRequest:
+      description: Los datos son incorrectos o no se proporcionaron correctamente
+    NotFound:
+      description: No se encontró el recurso solicitado
+    ServerError:
+      description: Error interno del servidor
+  
+  parameters:
+    token:
+      in: header
+      name: Authorization
+      description: Token de autenticación
+      required: false
+      schema:
+        type: string
+        
+        
+        
+        
+        
