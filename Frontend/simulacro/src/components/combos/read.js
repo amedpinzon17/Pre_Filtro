@@ -3,6 +3,7 @@ import { Table, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
 export default function Read() {
   const [APIData, setAPIData] = useState([]);
 
@@ -22,7 +23,14 @@ export default function Read() {
   };
 
   const oneDelete = (_id) => {
-    axios.delete(`http://localhost:2031/combos/deleteCombo/${_id}`);
+    axios.delete(`http://localhost:2031/combos/deleteCombo/${_id}`)
+    .then((response) => {
+      console.log('elemento eliminado;', response.data);
+      window.location.reload();
+    })
+    .catch((error) => {
+        console.error('Error al eliminar el elemento:', error);
+      });
   };
 
   return (

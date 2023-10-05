@@ -3,6 +3,7 @@ import { Table, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
 export default function ReadBurguers() {
   const [APIData, setAPIData] = useState([]);
 
@@ -21,7 +22,14 @@ export default function ReadBurguers() {
   };
 
   const oneDelete = (_id) => {
-    axios.delete(`http://localhost:2031/burguers/deleteHam/${_id}`);
+    axios.delete(`http://localhost:2031/burguers/deleteHam/${_id}`)
+    .then((response) => {
+      console.log('elemento eliminado;', response.data);
+      window.location.reload();
+    })
+    .catch((error) => {
+        console.error('Error al eliminar el elemento:', error);
+      });
   };
 
   return (

@@ -7,21 +7,21 @@ servers:
 - url: http://localhost:2031
 tags:
 - name: Arepas
-  description: Operaciones relacionadas con las arepas.
+  description: Platillo cuya caracteristica principal es una arepa rellena.
 - name: Bebidas
-  description: Operaciones relacionadas con las bebidas.
+  description: Bebidas para acompañar sus alimetos.
 - name: Carnes
-  description: Operaciones relacionadas con las carnes.
+  description: Platillos con variedad de carnes.
 - name: Combos
-  description: Operaciones relacionadas con las carnes.
+  description: Combos para disfrutar en pareja o familia.
 - name: Hamburguesas
-  description: Operaciones relacionadas con las carnes.
+  description: deliciosas Hamburguesas.
 - name: Papas_Fritas
-  description: Operaciones relacionadas con las carnes.
+  description: Platillo cuya caracteristica principal son las papas fritas.
 - name: Picadas
-  description: Operaciones relacionadas con las carnes.
+  description: picadas en diferentes presentaciones.
 - name: Restaurantes
-  description: Operaciones relacionadas con las carnes.
+  description: Restaurantes ubicados en Santander.
 
 
 paths:
@@ -106,7 +106,7 @@ paths:
     get:
       tags:
       - Bebidas
-      summary: Obtiene los datos de los cursos.
+      summary: Obtiene los datos de las bebidas.
       parameters:
       - $ref: '#/components/parameters/token'
       responses:  
@@ -115,9 +115,9 @@ paths:
     post:
       tags:
       - Bebidas
-      summary: Postea datos para las Asignaturas.
+      summary: Postea datos para las bebudas.
       requestBody:
-        description: Datos del nuevo curso.
+        description: Datos de las bebidas.
         required: true
         content:
           application/json:
@@ -130,7 +130,7 @@ paths:
                   type: number
       responses:  
         '201':
-          description: Creado exitosamente
+          description: Creada exitosamente
         '400':
           $ref: '#/components/responses/BadRequest'
         '500':
@@ -138,11 +138,11 @@ paths:
     put:
       tags:
       - Bebidas
-      summary: Actualiza datos de una Asignatura existente.
+      summary: Actualiza datos de una nueva bebida.
       parameters:
       - $ref: '#/components/parameters/token'
       requestBody:
-        description: Nuevos datos del curso.
+        description: Nuevas bebidas.
         required: False
         content:
           application/json:
@@ -168,7 +168,7 @@ paths:
     delete:
       tags:
       - Bebidas
-      summary: Elimina una producto o una Arepa existente.
+      summary: Elimina una producto o una bebida existente.
       parameters:
       - $ref: '#/components/parameters/token'
       responses:  
@@ -186,7 +186,7 @@ paths:
     get:
       tags:
       - Carnes
-      summary: Obtiene los datos de los cursos.
+      summary: Obtiene los datos de las carnes.
       parameters:
       - $ref: '#/components/parameters/token'
       responses:  
@@ -218,9 +218,9 @@ paths:
     put:
       tags:
       - Carnes
-      summary: Actualiza datos de un curso de carnes existente.
+      summary: Actualiza datos de las carnes existente.
       requestBody:
-        description: Nuevos datos del curso de carnes.
+        description: Nuevos datos de las carnes.
         required: false
         content:
           application/json:
@@ -257,7 +257,7 @@ paths:
     get:
       tags:
       - Combos
-      summary: Obtiene los datos de los cursos.
+      summary: Obtiene los datos de los combos.
       parameters:
       - $ref: '#/components/parameters/token'
       responses:  
@@ -266,9 +266,9 @@ paths:
     post:
       tags:
       - Combos
-      summary: Crea un nuevo curso de carnes.
+      summary: Crea un nuevo combo.
       requestBody:
-        description: Datos del nuevo curso de carnes.
+        description: Datos del nuevo combo.
         required: true
         content:
           application/json:
@@ -293,9 +293,9 @@ paths:
     put:
       tags:
       - Combos
-      summary: Actualiza datos de un curso de carnes existente.
+      summary: Actualiza datos de un combo existente.
       requestBody:
-        description: Nuevos datos del curso de carnes.
+        description: Nuevos datos de los combos.
         required: false
         content:
           application/json:
@@ -322,7 +322,7 @@ paths:
     delete:
       tags:
       - Combos
-      summary: Elimina un curso de carnes existente.
+      summary: Elimina un combo existente.
       responses:  
         '204':
           description: Eliminado exitosamente
@@ -345,7 +345,7 @@ paths:
     get:
       tags:
       - Hamburguesas
-      summary: Obtiene los datos de los cursos.
+      summary: Obtiene los datos de las hamburguesas.
       parameters:
       - $ref: '#/components/parameters/token'
       responses:  
@@ -354,9 +354,9 @@ paths:
     post:
       tags:
       - Hamburguesas
-      summary: Crea un nuevo curso de carnes.
+      summary: Crea una nueva hamburguesa.
       requestBody:
-        description: Datos del nuevo curso de carnes.
+        description: Datos de la nueva hamburguesas.
         required: true
         content:
           application/json:
@@ -377,9 +377,9 @@ paths:
     put:
       tags:
       - Hamburguesas
-      summary: Actualiza datos de un curso de carnes existente.
+      summary: Actualiza datos de una hamburguesas existente.
       requestBody:
-        description: Nuevos datos del curso de carnes.
+        description: Nuevos datos de la hamburguesas.
         required: false
         content:
           application/json:
@@ -402,7 +402,7 @@ paths:
     delete:
       tags:
       - Hamburguesas
-      summary: Elimina un curso de carnes existente.
+      summary: Elimina una hamburguesas existente.
       responses:  
         '204':
           description: Eliminado exitosamente
@@ -421,7 +421,7 @@ paths:
     get:
       tags:
       - Papas_Fritas
-      summary: Obtiene los datos de los cursos.
+      summary: Obtiene los datos de las papas_Fritas.
       parameters:
       - $ref: '#/components/parameters/token'
       responses:  
@@ -430,9 +430,9 @@ paths:
     post:
       tags:
       - Papas_Fritas
-      summary: Crea un nuevo curso de carnes.
+      summary: Crea un nuevo curso depapas_Fritas.
       requestBody:
-        description: Datos del nuevo curso de carnes.
+        description: Datos de las papas_Fritas.
         required: true
         content:
           application/json:
@@ -453,9 +453,9 @@ paths:
     put:
       tags:
       - Papas_Fritas
-      summary: Actualiza datos de un curso de carnes existente.
+      summary: Actualiza datos de las papas_Fritas existente.
       requestBody:
-        description: Nuevos datos del curso de carnes.
+        description: Nuevos datos de las papas_Fritas.
         required: false
         content:
           application/json:
@@ -494,7 +494,7 @@ paths:
     get:
       tags:
       - Picadas
-      summary: Obtiene los datos de los cursos.
+      summary: Obtiene los datos de las picadas.
       parameters:
       - $ref: '#/components/parameters/token'
       responses:  
@@ -503,9 +503,9 @@ paths:
     post:
       tags:
       - Picadas
-      summary: Crea un nuevo curso de carnes.
+      summary: Crea una nueva picada.
       requestBody:
-        description: Datos del nuevo curso de carnes.
+        description: Datos de la nueva picada.
         required: true
         content:
           application/json:
@@ -526,9 +526,9 @@ paths:
     put:
       tags:
       - Picadas
-      summary: Actualiza datos de un curso de carnes existente.
+      summary: Actualiza datos de una picada existente.
       requestBody:
-        description: Nuevos datos del curso de carnes.
+        description: Nuevos datos una picada.
         required: false
         content:
           application/json:
@@ -551,7 +551,7 @@ paths:
     delete:
       tags:
       - Picadas
-      summary: Elimina un platillos de papas fritas.
+      summary: Elimina un platillos de picadas.
       responses:  
         '204':
           description: Eliminado exitosamente
@@ -568,7 +568,7 @@ paths:
     get:
       tags:
       - Restaurantes
-      summary: Obtiene los datos de los cursos.
+      summary: Obtiene los datos de restaurantes.
       parameters:
       - $ref: '#/components/parameters/token'
       responses:  
@@ -577,9 +577,9 @@ paths:
     post:
       tags:
       - Restaurantes
-      summary: Crea un nuevo curso de carnes.
+      summary: Crea un nuevo restaurante.
       requestBody:
-        description: Datos del nuevo curso de carnes.
+        description: Datos del nuevo restaurante.
         required: true
         content:
           application/json:
@@ -606,9 +606,9 @@ paths:
     put:
       tags:
       - Restaurantes
-      summary: Actualiza datos de un curso de carnes existente.
+      summary: Actualiza datos de un restaurante existente.
       requestBody:
-        description: Nuevos datos del curso de carnes.
+        description: Nuevos datos del restaurantes.
         required: false
         content:
           application/json:
@@ -637,7 +637,7 @@ paths:
     delete:
       tags:
       - Restaurantes
-      summary: Elimina un platillos de papas fritas.
+      summary: Elimina un platillos de restaurantes.
       responses:  
         '204':
           description: Eliminado exitosamente

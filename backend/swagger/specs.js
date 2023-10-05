@@ -1,0 +1,1012 @@
+const swaggerJsdoc = require('swagger-jsdoc');
+
+const swaggerDefinition = {
+
+    "openapi": "3.1.0",
+  "info": {
+    "title": "API de seguimiento de restaurantes de comidas rapípidas en Santander - Colombia.",
+    "description": "Esta API se encarga de manejar informacion almacenada en una base de datos (MongoDB) que contiene datos necesarios para gestionar y dar a conocer los diferentes restaurantes que ofrecen productos o platillos.",
+    "version": "2.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:2031"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Arepas",
+      "description": "Platillo cuya caracteristica principal es una arepa rellena."
+    },
+    {
+      "name": "Bebidas",
+      "description": "Bebidas para acompa├▒ar sus alimetos."
+    },
+    {
+      "name": "Carnes",
+      "description": "Platillos con variedad de carnes."
+    },
+    {
+      "name": "Combos",
+      "description": "Combos para disfrutar en pareja o familia."
+    },
+    {
+      "name": "Hamburguesas",
+      "description": "deliciosas Hamburguesas."
+    },
+    {
+      "name": "Papas_Fritas",
+      "description": "Platillo cuya caracteristica principal son las papas fritas."
+    },
+    {
+      "name": "Picadas",
+      "description": "picadas en diferentes presentaciones."
+    },
+    {
+      "name": "Restaurantes",
+      "description": "Restaurantes ubicados en Santander."
+    }
+  ],
+  "paths": {
+    "/arepas": {
+      "get": {
+        "tags": [
+          "Arepas"
+        ],
+        "summary": "Obtiene los datos de las arepas.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Arepas"
+        ],
+        "summary": "Crea una nueva arepa.",
+        "requestBody": {
+          "description": "Datos de la nueva arepa.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Creada exitosamente"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Arepas"
+        ],
+        "summary": "Actualiza datos de una arepa existente.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "requestBody": {
+          "description": "Nuevos datos de la arepa.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actualizada exitosamente"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Arepas"
+        ],
+        "summary": "Elimina una arepa existente.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Eliminada exitosamente"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/bebidas": {
+      "get": {
+        "tags": [
+          "Bebidas"
+        ],
+        "summary": "Obtiene los datos de las bebidas.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Bebidas"
+        ],
+        "summary": "Postea datos para las bebudas.",
+        "requestBody": {
+          "description": "Datos de las bebidas.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Creada exitosamente"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Bebidas"
+        ],
+        "summary": "Actualiza datos de una nueva bebida.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "requestBody": {
+          "description": "Nuevas bebidas.",
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actualizado exitosamente"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Bebidas"
+        ],
+        "summary": "Elimina una producto o una bebida existente.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Eliminado exitosamente"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/carnes": {
+      "get": {
+        "tags": [
+          "Carnes"
+        ],
+        "summary": "Obtiene los datos de las carnes.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Carnes"
+        ],
+        "summary": "Crea un nuevo curso de carnes.",
+        "requestBody": {
+          "description": "Datos del nuevo curso de carnes.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Creado exitosamente"
+          },
+          "400": {
+            "description": "Los datos son incorrectos o no se proporcionaron correctamente"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Carnes"
+        ],
+        "summary": "Actualiza datos de las carnes existente.",
+        "requestBody": {
+          "description": "Nuevos datos de las carnes.",
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actualizado exitosamente"
+          },
+          "400": {
+            "description": "Los datos son incorrectos o no se proporcionaron correctamente"
+          },
+          "404": {
+            "description": "No se encontr├│ el recurso solicitado"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Carnes"
+        ],
+        "summary": "Elimina un curso de carnes existente.",
+        "responses": {
+          "204": {
+            "description": "Eliminado exitosamente"
+          },
+          "404": {
+            "description": "No se encontr├│ el recurso solicitado"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      }
+    },
+    "/combos": {
+      "get": {
+        "tags": [
+          "Combos"
+        ],
+        "summary": "Obtiene los datos de los combos.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Combos"
+        ],
+        "summary": "Crea un nuevo combo.",
+        "requestBody": {
+          "description": "Datos del nuevo combo.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "descripcion": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  },
+                  "comida": {
+                    "type": "string"
+                  },
+                  "bebida": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Creado exitosamente"
+          },
+          "400": {
+            "description": "Los datos son incorrectos o no se proporcionaron correctamente"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Combos"
+        ],
+        "summary": "Actualiza datos de un combo existente.",
+        "requestBody": {
+          "description": "Nuevos datos de los combos.",
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "descripcion": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  },
+                  "comida": {
+                    "type": "string"
+                  },
+                  "bebida": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actualizado exitosamente"
+          },
+          "400": {
+            "description": "Los datos son incorrectos o no se proporcionaron correctamente"
+          },
+          "404": {
+            "description": "No se encontr├│ el recurso solicitado"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Combos"
+        ],
+        "summary": "Elimina un combo existente.",
+        "responses": {
+          "204": {
+            "description": "Eliminado exitosamente"
+          },
+          "404": {
+            "description": "No se encontr├│ el recurso solicitado"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      }
+    },
+    "/hamburguesas": {
+      "get": {
+        "tags": [
+          "Hamburguesas"
+        ],
+        "summary": "Obtiene los datos de las hamburguesas.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Hamburguesas"
+        ],
+        "summary": "Crea una nueva hamburguesa.",
+        "requestBody": {
+          "description": "Datos de la nueva hamburguesas.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Creado exitosamente"
+          },
+          "400": {
+            "description": "Los datos son incorrectos o no se proporcionaron correctamente"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Hamburguesas"
+        ],
+        "summary": "Actualiza datos de una hamburguesas existente.",
+        "requestBody": {
+          "description": "Nuevos datos de la hamburguesas.",
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actualizado exitosamente"
+          },
+          "400": {
+            "description": "Los datos son incorrectos o no se proporcionaron correctamente"
+          },
+          "404": {
+            "description": "No se encontr├│ el recurso solicitado"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Hamburguesas"
+        ],
+        "summary": "Elimina una hamburguesas existente.",
+        "responses": {
+          "204": {
+            "description": "Eliminado exitosamente"
+          },
+          "404": {
+            "description": "No se encontr├│ el recurso solicitado"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      }
+    },
+    "/papas_Fritas": {
+      "get": {
+        "tags": [
+          "Papas_Fritas"
+        ],
+        "summary": "Obtiene los datos de las papas_Fritas.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Papas_Fritas"
+        ],
+        "summary": "Crea un nuevo curso depapas_Fritas.",
+        "requestBody": {
+          "description": "Datos de las papas_Fritas.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Creado exitosamente"
+          },
+          "400": {
+            "description": "Los datos son incorrectos o no se proporcionaron correctamente"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Papas_Fritas"
+        ],
+        "summary": "Actualiza datos de las papas_Fritas existente.",
+        "requestBody": {
+          "description": "Nuevos datos de las papas_Fritas.",
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actualizado exitosamente"
+          },
+          "400": {
+            "description": "Los datos son incorrectos o no se proporcionaron correctamente"
+          },
+          "404": {
+            "description": "No se encontr├│ el recurso solicitado"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Papas_Fritas"
+        ],
+        "summary": "Elimina un platillos de papas fritas.",
+        "responses": {
+          "204": {
+            "description": "Eliminado exitosamente"
+          },
+          "404": {
+            "description": "No se encontr├│ el recurso solicitado"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      }
+    },
+    "/picadas": {
+      "get": {
+        "tags": [
+          "Picadas"
+        ],
+        "summary": "Obtiene los datos de las picadas.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Picadas"
+        ],
+        "summary": "Crea una nueva picada.",
+        "requestBody": {
+          "description": "Datos de la nueva picada.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Creado exitosamente"
+          },
+          "400": {
+            "description": "Los datos son incorrectos o no se proporcionaron correctamente"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Picadas"
+        ],
+        "summary": "Actualiza datos de una picada existente.",
+        "requestBody": {
+          "description": "Nuevos datos una picada.",
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "precio": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actualizado exitosamente"
+          },
+          "400": {
+            "description": "Los datos son incorrectos o no se proporcionaron correctamente"
+          },
+          "404": {
+            "description": "No se encontr├│ el recurso solicitado"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Picadas"
+        ],
+        "summary": "Elimina un platillos de picadas.",
+        "responses": {
+          "204": {
+            "description": "Eliminado exitosamente"
+          },
+          "404": {
+            "description": "No se encontr├│ el recurso solicitado"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      }
+    },
+    "/restaurantes": {
+      "get": {
+        "tags": [
+          "Restaurantes"
+        ],
+        "summary": "Obtiene los datos de restaurantes.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Restaurantes"
+        ],
+        "summary": "Crea un nuevo restaurante.",
+        "requestBody": {
+          "description": "Datos del nuevo restaurante.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "type": "string"
+                  },
+                  "direccion": {
+                    "type": "string"
+                  },
+                  "telefono": {
+                    "type": "string"
+                  },
+                  "rating": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Creado exitosamente"
+          },
+          "400": {
+            "description": "Los datos son incorrectos o no se proporcionaron correctamente"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Restaurantes"
+        ],
+        "summary": "Actualiza datos de un restaurante existente.",
+        "requestBody": {
+          "description": "Nuevos datos del restaurantes.",
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "type": "string"
+                  },
+                  "direccion": {
+                    "type": "string"
+                  },
+                  "telefono": {
+                    "type": "string"
+                  },
+                  "rating": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actualizado exitosamente"
+          },
+          "400": {
+            "description": "Los datos son incorrectos o no se proporcionaron correctamente"
+          },
+          "404": {
+            "description": "No se encontr├│ el recurso solicitado"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Restaurantes"
+        ],
+        "summary": "Elimina un platillos de restaurantes.",
+        "responses": {
+          "204": {
+            "description": "Eliminado exitosamente"
+          },
+          "404": {
+            "description": "No se encontr├│ el recurso solicitado"
+          },
+          "500": {
+            "description": "Error interno del servidor"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "BadRequest": {
+        "description": "Los datos son incorrectos o no se proporcionaron correctamente"
+      },
+      "NotFound": {
+        "description": "No se encontr├│ el recurso solicitado"
+      },
+      "ServerError": {
+        "description": "Error interno del servidor"
+      }
+    },
+    "parameters": {
+      "token": {
+        "in": "header",
+        "name": "Authorization",
+        "description": "Token de autenticaci├│n",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+
+const specs = swaggerJsdoc({
+  swaggerDefinition,
+  apis: ['./app.js'], 
+});
+
+module.exports = specs;

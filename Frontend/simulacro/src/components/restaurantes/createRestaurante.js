@@ -1,11 +1,10 @@
-
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom'; // Importa desde 'react-router-dom'
 import { Button, Form } from 'semantic-ui-react';
 
-export default function CreateRestaurante() {
-    const history = useHistory();
+export default function CreateRestaurantes() {
+    const navigate = useNavigate(); // Usa useNavigate en lugar de useHistory
 
     const [nombre, setNombre] = useState('');
     const [tipo, setTipo] = useState('');
@@ -14,7 +13,8 @@ export default function CreateRestaurante() {
     const [horario, setHorario] = useState('');
     const [rating, setRating] = useState('');
 
-    const postDataRes = () => {
+    const postDataRes = (e) => {
+        e.preventDefault();
         axios.post('http://localhost:2031/restaurantes/postRestauran', {
             nombre,
             tipo,
@@ -23,7 +23,7 @@ export default function CreateRestaurante() {
             horario,
             rating,
         }).then(() => {
-            history.push('/');
+            navigate('/readRestaurantes'); 
         });
     };
 
@@ -36,31 +36,36 @@ export default function CreateRestaurante() {
                 </Form.Field>
 
                 <Form.Field>
-                    <label>Tipo</label>
-                    <input placeholder='Ingrese el tipo' value={tipo} onChange={(e) => setTipo(e.target.value)} />
+                    <label>tipo</label>
+                    <input placeholder='Ingrese el nombre' type="text" value={tipo} onChange={(e) => setTipo(e.target.value)} />
                 </Form.Field>
+                
+
 
                 <Form.Field>
                     <label>Direccion</label>
-                    <input placeholder='Ingrese la dirección' value={direccion} onChange={(e) => setDireccion(e.target.value)} />
+                    <input placeholder='Ingrese el nombre' type="text" value={direccion} onChange={(e) => setDireccion(e.target.value)} />
+                </Form.Field>
+
+
+                <Form.Field>
+                    <label>telefono</label>
+                    <input placeholder='Ingrese el nombre' type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)} />
+                </Form.Field>
+
+
+                <Form.Field>
+                    <label>horario</label>
+                    <input placeholder='Ingrese el nombre' type="text" value={horario} onChange={(e) => setHorario(e.target.value)} />
                 </Form.Field>
 
                 <Form.Field>
-                    <label>Telefono</label>
-                    <input placeholder='Ingrese el teléfono' value={telefono} onChange={(e) => setTelefono(e.target.value)} />
+                    <label>rating</label>
+                    <input placeholder='Ingrese el nombre' type="text" value={rating} onChange={(e) => setRating(e.target.value)} />
                 </Form.Field>
 
-                <Form.Field>
-                    <label>Horario</label>
-                    <input placeholder='Ingrese el horario' value={horario} onChange={(e) => setHorario(e.target.value)} />
-                </Form.Field>
 
-                <Form.Field>
-                    <label>Rating</label>
-                    <input placeholder='Ingrese el rating' value={rating} onChange={(e) => setRating(e.target.value)} />
-                </Form.Field>
-
-                <Button type='submit' onClick={postDataRes}>Crear</Button>
+                <Button type='button' onClick={postDataRes}>Crear</Button>
             </Form>
         </div>
     );

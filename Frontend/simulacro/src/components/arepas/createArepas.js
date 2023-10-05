@@ -1,45 +1,43 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useHistory} from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
 
- function CreateArepas(){
-    const history = useHistory();
+function CreateArepas() {
+    const navigate = useNavigate();
 
     const [nombre, setNombre] = useState('');
     const [precio, setPrecio] = useState('');
-    
-  
 
-    const postData = () => {
-        axios.post('http://localhost:2031/arepas/postArep', {
-            nombre, 
-            precio,
-        }).then(() => {
-            history.push('/');
+    const postData = (e) => {
+        e.preventDefault(); 
+        const arepa = {
+            nombre: nombre,
+            precio : precio
+        }
+        console.log(arepa);
+        axios.post('http://localhost:2031/arepas/postArep', arepa).then(() => {
+            navigate('/');
         });
     };
 
     return (
         <div>
             <Form className='create-form'>
-
                 <Form.Field>
-                    <label>nombre</label>
-                    <input placeholder='nombre' type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                    <label>Nombre</label>
+                    <input placeholder='Nombre' type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
                 </Form.Field>
 
                 <Form.Field>
                     <label>Precio</label>
-                    <input placeholder='precio' value={precio} onChange={(e) => setPrecio(e.target.value)} />
+                    <input placeholder='Precio' value={precio} onChange={(e) => setPrecio(e.target.value)} />
                 </Form.Field>
                
                 <Button type='submit' onClick={postData}>Crear</Button>
             </Form>
         </div>
     );
-
 }
-
 
 export default CreateArepas;

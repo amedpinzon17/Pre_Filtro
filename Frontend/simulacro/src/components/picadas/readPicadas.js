@@ -21,7 +21,14 @@ export default function ReadPicadas() {
   };
 
   const oneDelete = (_id) => {
-    axios.delete(`http://localhost:2031/picadas/deletePicadas/${_id}`);
+    axios.delete(`http://localhost:2031/picadas/deletePicadas/${_id}`)
+    .then((response) => {
+      console.log('elemento eliminado;', response.data);
+      window.location.reload();
+    })
+    .catch((error) => {
+        console.error('Error al eliminar el elemento:', error);
+      });
   };
 
   return (

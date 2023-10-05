@@ -3,6 +3,12 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger/specs.js');
+
+
+
 require('dotenv').config();
 app.use(express.json());
 
@@ -47,7 +53,13 @@ mongoose.connect(url, {
     app.use('/carnes', Carnes)
     app.use('/pronto', pronto);
     app.use('/picadas', picadas);
-    app.use('/restaurantes', restaurantes);    
+    app.use('/restaurantes', restaurantes); 
+    
+    
+
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+
+
 
     app.listen(port, () => {
         console.log(`conexion establecida en el puerto ${port}`);

@@ -3,6 +3,7 @@ import { Table, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
 export default function ReadPapas() {
   const [APIData, setAPIData] = useState([]);
 
@@ -21,7 +22,14 @@ export default function ReadPapas() {
   };
 
   const oneDelete = (_id) => {
-    axios.delete(`http://localhost:2031/papas/deletefritas/${_id}`);
+    axios.delete(`http://localhost:2031/papas/deletefritas/${_id}`)
+      .then((response) => {
+        console.log('Elemento eliminado:', response.data);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error('Error al eliminar el elemento:', error);
+      });
   };
 
   return (

@@ -51,6 +51,9 @@ const putRestaurantes = async (req, res) => {
     try{
         const clienteId = req.params.id;
         const nuevaInfo = req.body;
+
+      console.log(clienteId);
+
         const result = await Restaurantes.findByIdAndUpdate(clienteId, nuevaInfo, {
             new: true,
         }) 

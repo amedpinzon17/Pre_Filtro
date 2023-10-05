@@ -1,45 +1,40 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useHistory} from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
 
- function CreateCarnes(){
-    const history = useHistory();
+function CreateCarnes() {
+    const navigate = useNavigate(); // Usamos useNavigate en lugar de useHistory
 
     const [nombre, setNombre] = useState('');
     const [precio, setPrecio] = useState('');
-    
-  
 
     const postData = () => {
         axios.post('http://localhost:2031/carnes/postCarne', {
             nombre, 
             precio,
         }).then(() => {
-            history.push('/');
+            navigate('/'); // Usamos navigate para redirigir
         });
     };
 
     return (
         <div>
-            <Form className='create-form'>
-
+            <Form className='create-form' onSubmit={postData}>
                 <Form.Field>
-                    <label>nombre</label>
-                    <input placeholder='nombre' type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                    <label>Nombre</label>
+                    <input placeholder='Nombre' type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
                 </Form.Field>
 
                 <Form.Field>
                     <label>Precio</label>
-                    <input placeholder='precio' value={precio} onChange={(e) => setPrecio(e.target.value)} />
+                    <input placeholder='Precio' value={precio} onChange={(e) => setPrecio(e.target.value)} />
                 </Form.Field>
-               
-                <Button type='submit' onClick={postData}>Crear</Button>
+
+                <Button type='submit'>Crear</Button>
             </Form>
         </div>
     );
-
 }
-
 
 export default CreateCarnes;
