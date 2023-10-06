@@ -1,0 +1,72 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Incluir relleno y borde en el tamaño total */
+}
+
+body {
+    background-image: url('https://img.freepik.com/vector-gratis/caida-hamburguesa-realista-sobre-fondo-pizarra_79603-1043.jpg?t=st=1696593394~exp=1696593994~hmac=de9856d431ed017cdb71ac9938a646a76a6088ec01816082228c4926afa92be4');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, Helvetica, sans-serif; /* Aplica la fuente a todo el cuerpo */
+}
+
+
+h2{
+    font-size: 24px;
+    margin: 15px;
+    margin-bottom: 10px; 
+    font-weight: bold; 
+    color: rgb(0, 0, 0);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+/* Estilos para el formulario */
+.formulario {
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #dfdfdf6c;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Estilos para los campos de entrada */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el botón */
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Media query para pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+    .formulario {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    input {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form } from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react'
+import '../form.css'
+
 
 function CreateCarnes() {
     const navigate = useNavigate(); // Usamos useNavigate en lugar de useHistory
@@ -19,7 +21,8 @@ function CreateCarnes() {
     };
 
     return (
-        <div>
+        <div className='formulario'>
+            <h2>Crear - Carnes</h2>
             <Form className='create-form' onSubmit={postData}>
                 <Form.Field>
                     <label>Nombre</label>

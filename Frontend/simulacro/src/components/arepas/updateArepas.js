@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form } from "semantic-ui-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import '../form.css'
 
 export default function UpdateArepas() {
   const navigate = useNavigate();
@@ -28,7 +29,8 @@ export default function UpdateArepas() {
   };
 
   return (
-    <div>
+    <div className="formulario">
+      <h2>Editar - Arepas</h2>
       <Form className="create-form">
         <Form.Field>
           <label>Nombre</label>

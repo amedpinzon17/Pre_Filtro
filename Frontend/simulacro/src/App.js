@@ -31,7 +31,7 @@ function App() {
   return (
     <div className='principal'>
       <div className='main'>
-        <h2 className='main-header'> Pre-Filtro </h2>
+        <h1 className='main-header'> PRE - FILTRO </h1>
         <Menu />
        <Routes>
           <Route path="/create" element={<Create />} />

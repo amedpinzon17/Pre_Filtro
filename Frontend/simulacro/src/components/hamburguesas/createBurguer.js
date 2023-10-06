@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Button, Form } from 'semantic-ui-react';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import '../form.css'
+
 
 function CreateBurguers() { // Nombre en mayúscula según la convención de React
     const navigate = useNavigate();
@@ -23,7 +25,8 @@ function CreateBurguers() { // Nombre en mayúscula según la convención de Rea
     }
 
     return (
-        <div>
+        <div className='formulario'>
+            <h2>Crear - Hamburguesas</h2>
             <Form className='create-form' onSubmit={postData}>
                 <Form.Field>
                     <label>Nombre</label>

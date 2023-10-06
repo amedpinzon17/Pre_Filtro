@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
+import '../form.css'
 
 function CreateBebidas() {
     const navigate = useNavigate();
@@ -20,7 +21,8 @@ function CreateBebidas() {
     };
 
     return (
-        <div>
+        <div className='formulario'>
+            <h2>Crear - Bebidas</h2>
             <Form className='create-form'>
                 <Form.Field>
                     <label>Nombre</label>

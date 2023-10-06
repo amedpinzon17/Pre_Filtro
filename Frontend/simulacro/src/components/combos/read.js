@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import '../table.css'
 
 
 export default function Read() {
@@ -34,10 +35,11 @@ export default function Read() {
   };
 
   return (
-    <div>
+    <div className='customers'>
+       <h2>Combos</h2>
       <Table singleLine>
         <Table.Header>
-          <Table.Row>
+          <Table.Row className='titulos'>
             <Table.HeaderCell>Descripcion</Table.HeaderCell>
             <Table.HeaderCell>Precio</Table.HeaderCell>
             <Table.HeaderCell>Comida</Table.HeaderCell>

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
+import '../form.css'
 
 export default function UpdateRestaurantes() {
     const navigate = useNavigate();
@@ -47,7 +48,8 @@ export default function UpdateRestaurantes() {
     };
 
     return (
-        <div>
+        <div className='formulario' >
+            <h2>Editar - Restaurante</h2>
             <Form className='create-form'>
                 <Form.Field>
                     <label>Nombre</label>
@@ -84,7 +86,7 @@ export default function UpdateRestaurantes() {
 
                 
                 
-                <Button type='button' onClick={updateAPIDataRes}>
+                <Button type='submit' onClick={updateAPIDataRes}>
                     Actualizar
                 </Button>
             </Form>

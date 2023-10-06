@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Importa desde 'react-router-dom'
 import { Button, Form } from 'semantic-ui-react';
+import '../form.css'
 
 export default function CreateRestaurantes() {
     const navigate = useNavigate(); // Usa useNavigate en lugar de useHistory
@@ -29,6 +30,13 @@ export default function CreateRestaurantes() {
 
     return (
         <div>
+
+            
+
+            <div className='formulario'>
+<h2>Crear - Restaurante</h2>
+
+
             <Form className='create-form'>
                 <Form.Field>
                     <label>Nombre</label>
@@ -68,5 +76,7 @@ export default function CreateRestaurantes() {
                 <Button type='button' onClick={postDataRes}>Crear</Button>
             </Form>
         </div>
-    );
+
+        </div>
+            );
 }

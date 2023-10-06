@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
+import '../form.css'
+
 
 function Create() {
     const navigate = useNavigate(); // Usamos useNavigate en lugar de useHistory
@@ -23,7 +25,8 @@ function Create() {
     };
 
     return (
-        <div>
+        <div className='formulario'>
+            <h2>Crear - Combo</h2>
             <Form className='create-form' onSubmit={postData}>
                 <Form.Field>
                     <label>Descripcion</label>

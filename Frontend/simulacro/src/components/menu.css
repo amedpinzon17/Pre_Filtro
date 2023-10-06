@@ -7,10 +7,13 @@
     padding: 20px;
 }
 
+
 .card {
     margin: 10px;
     padding: 10px;
-    background-color: #bebebe;
+    width: 10em;
+    height: 8em;
+    background-color: #92929262;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -18,12 +21,13 @@
     align-items: center;
 }
 
+
 .button {
     margin-top: 10px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #4caf50;
+    background-color:#20a737;
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -31,10 +35,10 @@
 }
 
 .button:hover {
-    background-color: #45a049;
+    background-color: #3f8d4c;
 }
 
-/* Estilos para hacer el menú responsive */
+
 @media (max-width: 768px) {
     .menu-container {
         flex-direction: column;
@@ -45,3 +49,4 @@
         width: 80%;
     }
 }
+

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import '../table.css'
 
 
 export default function ReadBebidas() {
@@ -33,12 +34,14 @@ export default function ReadBebidas() {
   };
 
   return (
-    <div>
+    <div className='customers1'>
+       <h2>Bebidas</h2>
       <Table singleLine>
         <Table.Header>
-          <Table.Row>
+          <Table.Row className='titulos'>
             <Table.HeaderCell>Nombre</Table.HeaderCell>
             <Table.HeaderCell>Precio</Table.HeaderCell>
+            <Table.HeaderCell>Buttons</Table.HeaderCell>
             
           </Table.Row>
         </Table.Header>

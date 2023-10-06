@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form } from 'semantic-ui-react';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import '../form.css'
 
 export default function UpdateBurguers() {
     const navigate = useNavigate(); // Usamos useNavigate en lugar de useHistory
@@ -26,7 +27,8 @@ export default function UpdateBurguers() {
     }
 
     return (
-        <div>
+        <div className='formulario'>
+            <h2>Editar - Hamburguesas</h2>
             <Form className='create-form' onSubmit={updateAPIData}>
                 <Form.Field>
                     <label>Nombre</label>

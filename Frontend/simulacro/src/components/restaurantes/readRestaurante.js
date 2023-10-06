@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Table, Button} from 'semantic-ui-react';
 import { Link} from 'react-router-dom';
 import axios from 'axios';
-
+import '../table.css'
 
 
 export default function ReadRestaurantes () {
@@ -39,22 +39,26 @@ export default function ReadRestaurantes () {
 
 
      return (
-        <div>
+        <div className='customers' >
+             <h2>Restaurantes</h2>
         <Table singleLine>
             <Table.Header>
-            <Table.Row>
-                <Table.HeaderCell>Nombre</Table.HeaderCell>
-                <Table.HeaderCell>Tipo</Table.HeaderCell>
-                <Table.HeaderCell>Direccion</Table.HeaderCell>
-                <Table.HeaderCell>Telefono</Table.HeaderCell>
-                <Table.HeaderCell>Horario</Table.HeaderCell>
-                <Table.HeaderCell>Rating</Table.HeaderCell>
-            </Table.Row>
+                <Table.Row className='titulos'>
+                        <Table.HeaderCell> Nombre</Table.HeaderCell>
+                        <Table.HeaderCell>Tipo</Table.HeaderCell>
+                        <Table.HeaderCell>Direccion</Table.HeaderCell>
+                        <Table.HeaderCell>Telefono</Table.HeaderCell>
+                        <Table.HeaderCell>Horario</Table.HeaderCell>
+                        <Table.HeaderCell>Rating</Table.HeaderCell>
+                        <Table.HeaderCell>Buttons</Table.HeaderCell>
+                    
+                    
+                </Table.Row>
             </Table.Header>
             <Table.Body>
             {APIData.map((data) => (
                 <Table.Row key={data._id}>
-                <Table.Cell>{data.nombre}</Table.Cell>
+                <Table.Cell> {data.nombre}</Table.Cell>
                 <Table.Cell>{data.tipo}</Table.Cell>
                 <Table.Cell>{data.direccion}</Table.Cell>
                 <Table.Cell>{data.telefono}</Table.Cell>

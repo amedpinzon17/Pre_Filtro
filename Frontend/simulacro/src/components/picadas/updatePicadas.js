@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form } from 'semantic-ui-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../form.css'
 
 export default function UpdatePicadas() {
     const navigate = useNavigate();
@@ -31,7 +32,8 @@ export default function UpdatePicadas() {
     };
 
     return (
-        <div>
+        <div className='formulario'>
+            <h2>Editar - Picada</h2>
             <Form className='create-form'>
                 <Form.Field>
                     <label>Nombre</label>

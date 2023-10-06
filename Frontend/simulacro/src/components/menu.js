@@ -16,12 +16,15 @@ function Menu() {
                 </Link>
             </div>
 
+
+            
+
+
             <div className='card'>
               <Link to='/readRestaurantes'>
                 <button className="button">Restaurantes</button>
               </Link>
-              <Link to='/createRestaurantes'>
-                    <button className="button">create</button>
+              <Link to='/createRestaurantes'><button className="button">create</button>
               </Link>
             </div>
 
@@ -76,7 +79,7 @@ function Menu() {
                 <button className="button">Picadas</button>
             </Link>
             <Link to='/createPicadas'>
-                <button className="button">Picadas</button>
+                <button className="button">Create</button>
             </Link>
             </div>
 

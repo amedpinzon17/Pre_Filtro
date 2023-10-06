@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form } from 'semantic-ui-react';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import '../form.css'
 
 export default function UpdatePapas() {
     const navigate = useNavigate(); // Usamos useNavigate en lugar de useHistory
@@ -22,12 +23,13 @@ export default function UpdatePapas() {
             nombre,
             precio,
         }).then(() => {
-            navigate('/readPapas'); // Usamos navigate para redirigir
+            navigate('/readPapas'); 
         });
     }
 
     return (
-        <div>
+        <div className='formulario'>
+            <h2>Editar - Papas Fritas</h2>
             <Form className='create-form' onSubmit={updateAPIData}>
                 <Form.Field>
                     <label>Nombre</label>
